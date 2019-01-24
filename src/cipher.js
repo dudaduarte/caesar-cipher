@@ -10,11 +10,14 @@ let string = submitButton();*/
 function cipherEncode(offset, string){
   string = document.getElementById('idTextUser').value;
   arrayAsc = [];
+  offset = 3;
 
   for (i = 0; i < string.length; i++){
     arrayAsc.push(string.charCodeAt(i));
   }
-  
+
+  document.getElementById('idTextModified').innerHTML=arrayAsc;
+
 return arrayAsc;
 }
 
