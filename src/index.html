@@ -10,17 +10,37 @@
       <h1>Cypher</h1>
     </div>
     <div id="root">
-      <form method="post">
+
+      <form>
 
         <p>Cifre e decifre uma mensagem!</p>
 
-          <textarea name="comentário" rows="10" cols="40" wrap="hard">Digite seu texto aqui!</textarea>
-          <input type="submit" value="Cifrar" id="idSubmitButton" onclick="submitButton()">
-          <input type="reset" value="Limpar texto">
+          <textarea type="text" name="Texto para cifrar" id="idTextUser" rows="10" cols="40" wrap="hard" placeholder="Digite aqui seu texto"></textarea>
+
+          <button type="button" onclick="submitButton()">Cifrar</button>
+          <input type="reset" value="Limpar texto" />
 
       </form>
+
+    </div>
+
+    <div>
+      <span id="showText">
+      </span>
     </div>
     <script src="cipher.js"></script>
     <script src="tests.js"></script>
   </body>
 </html>
+
+<!--
+
+<input type="text" name="texto" id="idTextUser" placeholder="Digite aqui seu texto" />
+
+<textarea type="text" id="idTextUser" rows="10" cols="40" wrap="hard" placeholder="Digite aqui seu texto"></textarea>
+
+<input type="submit" id="idSubmitButton" onclick="submitButton()" />
+
+<button type="submit" id="idSubmitButton" onclick="submitButton()">Enviar</button> 
+
+-->
