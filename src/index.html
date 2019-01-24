@@ -17,17 +17,16 @@
 
           <textarea type="text" name="Texto para cifrar" id="idTextUser" rows="10" cols="40" wrap="hard" placeholder="Digite aqui seu texto"></textarea>
 
-          <button type="button" onclick="submitButton()">Cifrar</button>
+          <button type="button" onclick="cipherEncode()">Cifrar</button>
           <input type="reset" value="Limpar texto" />
 
       </form>
 
     </div>
 
-    <div>
-      <span id="showText">
-      </span>
-    </div>
+    <div id="showText">
+        <textarea type="text" name="Texto para cifrar" id="idTextModified" rows="10" cols="40" wrap="hard" placeholder="Digite aqui seu texto"></textarea>
+      </div>
     <script src="cipher.js"></script>
     <script src="tests.js"></script>
   </body>

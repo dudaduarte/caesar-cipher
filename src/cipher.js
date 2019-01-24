@@ -1,31 +1,26 @@
-function submitButton (){
-  const string = document.getElementById('idTextUser').value;
-  //let arrayText = string.split('');
+/*function submitButton (){
+  const textInformation = document.getElementById('idTextUser').value;
+  //let arrayText = textInformation.split('');
   //document.getElementById('showText').innerHTML = arrayText;
-  return string;
+  return textInformation;
 }
 
-cipher.encode(offset, string){
-  let i = 0;
-  //lastIndex = string.length-1;
+let string = submitButton();*/
+
+function cipherEncode(offset, string){
+  string = document.getElementById('idTextUser').value;
   arrayAsc = [];
 
-  while (i < string.legth) {
-  arrayAsc.push(string.charCodeAt(i));
-  i++;
+  for (i = 0; i < string.length; i++){
+    arrayAsc.push(string.charCodeAt(i));
+  }
+  
+return arrayAsc;
 }
 
+function cipherDecode(offset, string){
 
 }
-
-/* cipher.decode(offset, string){
-
-} */
-
-
-
-let textInformation = submitButton();
-
 
 
 /*
