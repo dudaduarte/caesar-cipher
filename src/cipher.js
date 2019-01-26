@@ -17,7 +17,7 @@ function cipherEncode(offset, string){
 
   // talvez outra função aqui
 
-  offset = 3;
+  offset = document.getElementById('offsetInput').value;
   arrayEncripted = [];
 
   for (j = 0; j < arrayAsc.length; j++){
