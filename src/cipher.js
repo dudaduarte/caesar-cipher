@@ -10,15 +10,28 @@ let string = submitButton();*/
 function cipherEncode(offset, string){
   string = document.getElementById('idTextUser').value;
   arrayAsc = [];
-  offset = 3;
 
   for (i = 0; i < string.length; i++){
     arrayAsc.push(string.charCodeAt(i));
   }
 
-  document.getElementById('idTextModified').innerHTML=arrayAsc;
+  // talvez outra função aqui
 
-return arrayAsc;
+  offset = 3;
+  arrayEncripted = [];
+
+  for (j = 0; j < arrayAsc.length; j++){
+    arrayEncripted.push(([arrayAsc[j] - 97 + offset] % 26) + 97);
+  }
+
+  // aqui transformando a array convertida em string de novo
+
+  let textEncripted = String.fromCharCode(...arrayEncripted);
+  textEncripted = textEncripted.replace("W", " "); // n tá funfando. PQ? resolver essa questão do espaço
+
+  document.getElementById('idTextModified').innerHTML=textEncripted;
+
+return textEncripted;
 }
 
 function cipherDecode(offset, string){
