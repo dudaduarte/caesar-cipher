@@ -7,21 +7,25 @@
   </head>
   <body>
     <div id="title">
-      <h1>C̡̜̖͔ͅĄ̜̠̗̠̗E̢̩̠͓͉S͉̗͓̯͜A̧̰̫̖͍R̤̞͜ C̨̙̜̦͙̟Y̧̟̩̘P̨̝͎̜͕H̢̜̘͖̯Ę̟̤̬̮R̨̠͙͕̠̣</h1>
+      <h1>C Y P H E R</h1>
+
+      <span>Que tal criar uma mensagem ciptografada para que só quem você quer consiga ler? Chega com nóis.</span>
     </div>
     <div id="root">
 
       <form>
 
-        <p>Cifre e decifre uma mensagem!</p>
-
-          <h2>Selecione um deslocamento:</h2>
+          <h2>SELECIONE UM DESLOCAMENTO:</h2>
+          <!--<input type="number" id="offsetInput" name="tentacles" min="1" max="26" placeholder="0">-->
+          <input id="showNumber" value="0" readonly>
           <br />
-          <input type="number" id="offsetInput" name="tentacles" min="1" max="26" placeholder="0">
+          <input type="range" id="offsetInput" min="0" max="25" value="0" oninput="showNumber.value = value"> <!--onchange="showNumber.value = value"-->
 
-          <h2>Insira um texto para criptografá-lo :)</h2>
-          <textarea type="text" name="Texto para cifrar" id="idTextUser" rows="10" cols="40" wrap="hard" placeholder="Digite aqui seu texto" style="resize: none"></textarea>
-          <textarea type="text" name="Texto para cifrar" id="idTextModified" rows="10" cols="40" wrap="hard" placeholder="Seu texto aparecerá cifrado aqui" style="resize: none"></textarea>
+          <br /> <br /> <br />
+
+          <h2>CRIPTOGRAFE E DESCRIPTOGRAFE :)</h2>
+          <textarea type="text" name="Texto para cifrar" id="idTextUser" class="textBox" rows="8" cols="30" wrap="hard" placeholder="Digite aqui seu texto"></textarea>
+          <textarea type="text" name="Texto para cifrar" id="idTextModified" class="textBox" rows="8" cols="30" wrap="hard" placeholder="Seu texto aparecerá cifrado aqui"></textarea>
           <br />
           <button type="button" onclick="cipherEncode()" class="button">Cifrar</button>
           <input type="reset" value="Limpar texto" class="button" />

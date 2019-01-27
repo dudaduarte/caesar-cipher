@@ -17,7 +17,7 @@ function cipherEncode(offset, string){
 
   // talvez outra função aqui
 
-  offset = document.getElementById('offsetInput').value;
+  offset = parseInt(document.getElementById('offsetInput').value);
   arrayEncripted = [];
 
   for (j = 0; j < arrayAsc.length; j++){
@@ -27,11 +27,15 @@ function cipherEncode(offset, string){
   // aqui transformando a array convertida em string de novo
 
   let textEncripted = String.fromCharCode(...arrayEncripted);
-  textEncripted = textEncripted.replace("W", " "); // n tá funfando. PQ? resolver essa questão do espaço
+  
+  // pensar em como fazer a barra de espaço não converter
+  // fazer o mesmo com maiúsculas
+  // descriptografar
+  // arrumar css
 
   document.getElementById('idTextModified').innerHTML=textEncripted;
 
-return textEncripted;
+return offset;
 }
 
 function cipherDecode(offset, string){
