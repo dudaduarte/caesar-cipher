@@ -8,14 +8,13 @@
 let string = submitButton();*/
 
 function cipherEncode(offset, string){
+
   string = document.getElementById('idTextUser').value;
   arrayAsc = [];
 
   for (i = 0; i < string.length; i++){
     arrayAsc.push(string.charCodeAt(i));
   }
-
-  // talvez outra função aqui
 
   offset = parseInt(document.getElementById('offsetInput').value);
   arrayEncripted = [];
@@ -30,21 +29,42 @@ function cipherEncode(offset, string){
     }
   }
 
-  // aqui transformando a array convertida em string de novo
-
   let textEncripted = String.fromCharCode(...arrayEncripted);
-  
-  // pensar em como fazer a barra de espaço não converter
-  // fazer o mesmo com maiúsculas
-  // descriptografar
-  // arrumar css
 
   document.getElementById('idTextModified').innerHTML=textEncripted;
 
-return offset;
+return textEncripted;
 }
 
+
+
 function cipherDecode(offset, string){
+
+  string = document.getElementById('idTextModified').value;
+  arrayAsc = [];
+
+  for (i = 0; i < string.length; i++){
+    arrayAsc.push(string.charCodeAt(i));
+  }
+
+  offset = parseInt(document.getElementById('offsetInput').value);
+  arrayDisencripted = [];
+
+  for (j = 0; j < arrayAsc.length; j++){
+    if (arrayAsc[j] >= 97 && arrayAsc[j] <= 122) {
+      arrayDisencripted.push(([arrayAsc[j] - 97 - offset] % 26) + 97);
+    } else if (arrayAsc[j] >= 65 && arrayAsc[j] <= 90) {
+      arrayDisencripted.push(([arrayAsc[j] - 65 - offset] % 26) + 65);
+    } else {
+      arrayDisencripted.push(arrayAsc[j]);
+    }
+  }
+
+  let textDisencripted = String.fromCharCode(...arrayDisencripted);
+
+  document.getElementById('idTextUser').innerHTML=textDisencripted;
+
+return textDisencripted;
 
 }
 

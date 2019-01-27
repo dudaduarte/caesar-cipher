@@ -8,47 +8,35 @@
   <body>
     <div id="title">
       <h1>C Y P H E R</h1>
-
-      <span>Que tal criar uma mensagem ciptografada para que só quem você quer consiga ler? Chega com nóis.</span>
+      <span>Que tal criar uma mensagem ciptografada para que só quem você queira consiga ler? Chega com nóis.</span>
     </div>
     <div id="root">
 
       <form>
 
-          <h2>SELECIONE UM DESLOCAMENTO:</h2>
-          <!--<input type="number" id="offsetInput" name="tentacles" min="1" max="26" placeholder="0">-->
+          <h2>Selecione um deslocamento:</h2>
           <input id="showNumber" value="0" readonly>
           <br />
-          <input type="range" id="offsetInput" min="0" max="25" value="0" oninput="showNumber.value = value"> <!--onchange="showNumber.value = value"-->
+          <input type="range" id="offsetInput" min="0" max="25" value="0" oninput="showNumber.value = value">
 
           <br /> <br /> <br />
 
-          <h2>CRIPTOGRAFE E DESCRIPTOGRAFE :)</h2>
-          <textarea type="text" name="Texto para cifrar" id="idTextUser" class="textBox" rows="8" cols="30" wrap="hard" placeholder="Digite aqui seu texto"></textarea>
-          <textarea type="text" name="Texto para cifrar" id="idTextModified" class="textBox" rows="8" cols="30" wrap="hard" placeholder="Seu texto aparecerá cifrado aqui"></textarea>
+          <h2>Ciptografe e descriptografe :)</h2>
+          <textarea type="text" name="Texto para cifrar" id="idTextUser" class="textBox" rows="8" cols="30" wrap="hard" placeholder="Digite aqui o texto a ser criptografado"></textarea>
+          &nbsp;
+          <textarea type="text" name="Texto cifrado" id="idTextModified" class="textBox" rows="8" cols="30" wrap="hard" placeholder="Texto criptografado aqui"></textarea>
           <br />
-          <button type="button" onclick="cipherEncode()" class="button">Cifrar</button>
-          <input type="reset" value="Limpar texto" class="button" />
+          <button type="button" id="button" onclick="cipherEncode()">Cifrar</button>
+          <input type="reset" id="button" value="Limpar texto" />
+          <button type="button" id="button" onclick="cipherDecode()">Decifrar</button>
 
       </form>
 
     </div>
 
-    <div id="showText">
+    <div id="showText" class="hidden">
     </div>
     <script src="cipher.js"></script>
     <script src="tests.js"></script>
   </body>
 </html>
-
-<!--
-
-<input type="text" name="texto" id="idTextUser" placeholder="Digite aqui seu texto" />
-
-<textarea type="text" id="idTextUser" rows="10" cols="40" wrap="hard" placeholder="Digite aqui seu texto"></textarea>
-
-<input type="submit" id="idSubmitButton" onclick="submitButton()" />
-
-<button type="submit" id="idSubmitButton" onclick="submitButton()">Enviar</button> 
-
--->
