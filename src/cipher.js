@@ -21,7 +21,13 @@ function cipherEncode(offset, string){
   arrayEncripted = [];
 
   for (j = 0; j < arrayAsc.length; j++){
-    arrayEncripted.push(([arrayAsc[j] - 97 + offset] % 26) + 97);
+    if (arrayAsc[j] >= 97 && arrayAsc[j] <= 122) {
+      arrayEncripted.push(([arrayAsc[j] - 97 + offset] % 26) + 97);
+    } else if (arrayAsc[j] >= 65 && arrayAsc[j] <= 90) {
+      arrayEncripted.push(([arrayAsc[j] - 65 + offset] % 26) + 65);
+    } else {
+      arrayEncripted.push(arrayAsc[j]);
+    }
   }
 
   // aqui transformando a array convertida em string de novo
