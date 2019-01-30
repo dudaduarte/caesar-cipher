@@ -1,71 +1,78 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Caesar Cypher</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div id="title">
-      <h1>C Y P H E R</h1>
-      <span>Que tal criar uma mensagem ciptografada para que só quem você queira consiga ler? Chega com nóis.</span>
-    </div>
 
-    <div id="welcome">
-      <h2>Caesar Cypher</h2>
-      <button type="button" id="buttonEncode" class="button" onclick="showDivCode()">Criptografar</button>
-      &nbsp;&nbsp;
-      <button type="button" id="buttonDecode" class="button" onclick="showDivDecode()">Descriptografar</button>
-    </div>
+<head>
+  <meta charset="utf-8">
+  <title>Caesar Cypher</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div id="title">
+    <h1>C Y P H E R</h1>
+    <span>Que tal criar uma mensagem ciptografada para que só quem você queira consiga ler? Chega com nóis.</span>
+  </div>
+
+  <div id="welcome">
+    <h2>Caesar Cypher</h2>
+    <button type="button" id="buttonEncode" class="button" onclick="showDivCode()">Criptografar</button>
+    &nbsp;&nbsp;
+    <button type="button" id="buttonDecode" class="button" onclick="showDivDecode()">Descriptografar</button>
+  </div>
 
 
-    <div id="code" class="codeDecode hidden">
-      <form>
-          <h2>Selecione um deslocamento:</h2>
-          <input id="showNumber" class="showNumber" value="0" readonly>
-          <br />
-          <input type="range" id="offsetInput" class="offset" min="-100" max="100" value="0" oninput="showNumber.value = value">
+  <div id="code" class="codeDecode hidden">
+    <form id="idFormEncode">
+      <h2>Selecione um deslocamento:</h2>
+      <input id="showNumber" class="showNumber" value="0" readonly>
+      <br />
+      <input type="range" id="offsetInput" class="offset" min="-100" max="100" value="0" oninput="showNumber.value = value">
 
-          <br /> <br />
+      <br /> <br />
 
-          <h2>Criptografe sua mensagem:</h2>
-          <textarea type="text" name="Texto para cifrar" id="idTextUser" class="textBox" rows="8" cols="30" wrap="hard" placeholder="Digite aqui o texto a ser criptografado"></textarea>
-          &nbsp;
-          <textarea type="text" name="Texto cifrado" id="idTextModified" class="textBox" rows="8" cols="30" wrap="hard"></textarea>
-          <br />
-          <button type="button" id="buttonEncode" class="button" onclick="cipherEncode()">Criptografar</button>
-          <button type="button" id="buttonClear" class="button" onclick="clearText()">Limpar texto</button>
-          <br />
-          <br />
-          <button type="button" id="buttonStartAgain" class="button" onclick="startAgain()">Voltar ao início</button>
-      </form>
-    </div>
+      <h2>Criptografe sua mensagem:</h2>
+      <textarea type="text" name="Texto para cifrar" id="idTextUser" class="textBox" rows="8" cols="30" wrap="hard"
+        placeholder="Digite aqui o texto a ser criptografado"></textarea>
+      &nbsp;
+      <textarea type="text" name="Texto cifrado" id="idTextModified" class="textBox" rows="8" cols="30" wrap="hard"></textarea>
+      <br />
+      <button type="button" id="buttonEncode" class="button" onclick="getInformationsEncode()">Criptografar</button>
+      <button type="button" id="buttonClear" class="button" onclick="clearText()">Limpar</button>
+      <button type="button" class="button" onclick="copyText()">Copiar texto</button>
+      <br />
+      <br />
+      <button type="button" id="buttonStartAgain" class="button" onclick="startAgain()">Voltar ao início</button>
+    </form>
+  </div>
 
-    <div id="decode" class="codeDecode hidden">
-      <form>
-          <h2>Selecione um deslocamento:</h2>
-          <input id="showNumber2" class="showNumber" value="0" readonly>
-          <br />
-          <input type="range" id="offsetInput2" class="offset" min="-100" max="100" value="0" oninput="showNumber.value = value">
+  <div id="decode" class="codeDecode hidden">
+    <form id="idFormDecode">
+      <h2>Selecione um deslocamento:</h2>
+      <input id="showNumber2" class="showNumber" value="0" readonly>
+      <br />
+      <input type="range" id="offsetInput2" class="offset" min="-100" max="100" value="0" oninput="showNumber2.value = value">
 
-          <br /> <br />
+      <br /> <br />
 
-          <h2>Descriptografe uma mensagem:</h2>
-          <textarea type="text" name="Texto inicial" id="idTextUser2" class="textBox" rows="8" cols="30" wrap="hard" placeholder="Digite aqui o texto a ser descriptografado"></textarea>
-          &nbsp;
-          <textarea type="text" name="Texto modificado" id="idTextModified2" class="textBox" rows="8" cols="30" wrap="hard"></textarea>
-          <br />
-          <button type="button" id="buttonDecode" class="button" onclick="cipherDecode()">Descriptografar</button>
-          <button type="button" id="buttonClear" class="button" onclick="clearText()">Limpar texto</button>
-          <br />
-          <br />
-          <button type="button" id="buttonStartAgain" class="button" onclick="startAgain()">Voltar ao início</button>
-      </form>
-    </div>
+      <h2>Descriptografe uma mensagem:</h2>
+      <textarea type="text" name="Texto inicial" id="idTextUser2" class="textBox" rows="8" cols="30" wrap="hard"
+        placeholder="Digite aqui o texto a ser descriptografado"></textarea>
+      &nbsp;
+      <textarea type="text" name="Texto modificado" id="idTextModified2" class="textBox" rows="8" cols="30" wrap="hard"></textarea>
+      <br />
+      <button type="button" id="buttonDecode" class="button" onclick="getInformationsDecode()">Descriptografar</button>
+      <button type="button" id="buttonClear" class="button" onclick="clearText()">Limpar</button>
+      <button type="button" class="button" onclick="pasteText()">Colar texto</button>
+      <br />
+      <br />
+      <button type="button" id="buttonStartAgain" class="button" onclick="startAgain()">Voltar ao início</button>
+    </form>
+  </div>
 
-    <div id="showText" class="hidden">
-    </div>
-    <script src="cipher.js"></script>
-    <script src="tests.js"></script>
-  </body>
+  <div id="showText" class="hidden">
+  </div>
+  <script src="cipher.js"></script>
+  <script src="tests.js"></script>
+</body>
+
 </html>

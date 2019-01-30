@@ -17,6 +17,10 @@
     cursor: pointer;
 }
 
+.button:hover {
+    opacity: 1;
+}
+
 #buttonStartAgain {
     background-color: #FF5C51;
     color: white;
@@ -25,10 +29,6 @@
 
 .hidden {
     display: none;
-}
-
-.button:hover {
-    opacity: 1;
 }
 
 .showNumber {
