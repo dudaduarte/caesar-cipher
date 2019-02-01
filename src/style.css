@@ -1,3 +1,11 @@
+body {
+    background-color: black;
+    background-image: url('images/geometrico.jpg');
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .textBox {
     resize: none;
     font-size: 16px;
@@ -9,7 +17,6 @@
     border-radius: 3px;
     background-color: black;
     color: white;
-    // border: 2px solid #4CAF50;
     border-radius: 10px;
     box-shadow: 0 1px 6px 0 rgba(0,0,0,0.2);
     opacity: 0.7;
@@ -22,10 +29,11 @@
 }
 
 #buttonStartAgain {
-    background-color: #FF5C51;
+    background-color: #FF9045;
     color: white;
     box-shadow: 0 1px 6px 0 rgba(0,0,0,0.2);
 }
+
 
 .hidden {
     display: none;
@@ -38,21 +46,27 @@
 }
 
 .offset {
-    width: 30%;
+    width: 50%;
     height: 8px;
     border-radius: 5px;
     outline: none;
     opacity: 0.7;
 }
 
-#title {
-//    background-image: url(images.jpg);
+#welcome {
     background-color: black;
-    text-align: left;
+    text-align: center;
     color: #736B6D;
     font-size: 16px;
     font-family: "Courier New", Courier, monospace;   
-    margin: 0px;
+    padding: 55px;
+    margin: 45px;
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+    position: relative;
+    float: left;
+    top: auto;
 }
 
 h1 {
@@ -63,21 +77,34 @@ h1 {
 }
 
 h2 {
-    font-size: 14px;
+    color: #FF9045;
+    font-size: 15px;
     font-family: "Lucida Console", Monaco, monospace;
-    color: #FF5C51;
+    font-weight: bold;
+}
+
+h3 {
+    color: #00437A;
+    font-size: 15px;
+    font-family: "Lucida Console", Monaco, monospace;
+    font-weight: bold;
 }
 
 p {
 
 }
 
-div {
-    width: 94%;
-    border-radius: 10px;
-    padding: 3%;
-    background-color: #FFFFFF;
+.divEncodeDecode {
+    height: 100%;
+    width: 650px;
+    padding: 40px;
+    background-color: white;
+    border-radius: 20px;
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
     text-align: center;
+    position: relative;
+    float: left;
+    top: auto;
+    margin: 20px;
     }
 

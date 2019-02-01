@@ -1,11 +1,13 @@
 function showDivCode() {
-  document.getElementById('welcome').classList.add('hidden');
-  document.getElementById('code').classList.remove('hidden');
+  document.getElementById('encode').classList.remove('hidden');
+  document.getElementById('decode').classList.add('hidden');
+  clearText();
 }
 
 function showDivDecode() {
-  document.getElementById('welcome').classList.add('hidden');
   document.getElementById('decode').classList.remove('hidden');
+  document.getElementById('encode').classList.add('hidden');
+  clearText();
 }
 
 function clearText() {
@@ -19,6 +21,8 @@ function copyText() {
   document.execCommand('copy');
 }
 
+// document.querySelector(.button) < isso é mais simples de usar pq vc pode usar tanto id quanto class, e etc (sendo que class é .button e id é #button)
+
 function pasteText() {
   document.getElementById('idTextUser2').select();
   document.execCommand('paste');
@@ -28,7 +32,7 @@ function pasteText() {
 
 function startAgain() {
   document.getElementById('welcome').classList.remove('hidden');
-  document.getElementById('code').classList.add('hidden');
+  document.getElementById('encode').classList.add('hidden');
   document.getElementById('decode').classList.add('hidden');
   clearText();
 }
@@ -92,10 +96,3 @@ function cipherDecode(offset, string) {
   let textDisencripted = String.fromCharCode(...arrayDisencripted);
   return textDisencripted;
 }
-
-
-/*
-window.cipher = {
-  // ...
-};
-*/
