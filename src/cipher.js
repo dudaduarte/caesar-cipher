@@ -13,6 +13,8 @@ function showDivDecode() {
 function clearText() {
   document.getElementById('idFormEncode').reset();
   document.getElementById('idFormDecode').reset();
+  document.getElementById('idTextModified').innerHTML="";
+  document.getElementById('idTextModified2').innerHTML="";
 }
 
 function copyText() {
@@ -20,15 +22,6 @@ function copyText() {
   document.execCommand('selectAll');
   document.execCommand('copy');
 }
-
-// document.querySelector(.button) < isso é mais simples de usar pq vc pode usar tanto id quanto class, e etc (sendo que class é .button e id é #button)
-
-function pasteText() {
-  document.getElementById('idTextUser2').select();
-  document.execCommand('paste');
-}
-
-// /\ não tá funcionando
 
 function startAgain() {
   document.getElementById('welcome').classList.remove('hidden');
@@ -61,6 +54,15 @@ function cipherEncode(offset, string) {
   arrayEncripted = [];
 
   for (j = 0; j < arrayAsc.length; j++) {
+    if (offset < 0) {
+      if (arrayAsc[j] >= 97 && arrayAsc[j] <= 122) {
+        arrayEncripted.push(([arrayAsc[j] - 122 + offset] % 26) + 122);
+      } else if (arrayAsc[j] >= 65 && arrayAsc[j] <= 90) {
+        arrayEncripted.push(([arrayAsc[j] - 90 + offset] % 26) + 90);
+      } else {
+        arrayEncripted.push(arrayAsc[j]);
+      }
+    } else {
     if (arrayAsc[j] >= 97 && arrayAsc[j] <= 122) {
       arrayEncripted.push(([arrayAsc[j] - 97 + offset] % 26) + 97);
     } else if (arrayAsc[j] >= 65 && arrayAsc[j] <= 90) {
@@ -69,9 +71,8 @@ function cipherEncode(offset, string) {
       arrayEncripted.push(arrayAsc[j]);
     }
   }
-
-  let textEncripted = String.fromCharCode(...arrayEncripted);
-  return textEncripted;
+}
+  return String.fromCharCode(...arrayEncripted);
 }
 
 function cipherDecode(offset, string) {
@@ -84,6 +85,15 @@ function cipherDecode(offset, string) {
   arrayDisencripted = [];
 
   for (j = 0; j < arrayAsc.length; j++) {
+    if (offset < 0) {
+      if (arrayAsc[j] >= 97 && arrayAsc[j] <= 122) {
+        arrayDisencripted.push(([arrayAsc[j] - 97 - offset] % 26) + 97);
+      } else if (arrayAsc[j] >= 65 && arrayAsc[j] <= 90) {
+        arrayDisencripted.push(([arrayAsc[j] - 65 - offset] % 26) + 65);
+      } else {
+        arrayDisencripted.push(arrayAsc[j]);
+      }
+    } else {
     if (arrayAsc[j] >= 97 && arrayAsc[j] <= 122) {
       arrayDisencripted.push(([arrayAsc[j] - 122 - offset] % 26) + 122);
     } else if (arrayAsc[j] >= 65 && arrayAsc[j] <= 90) {
@@ -92,7 +102,6 @@ function cipherDecode(offset, string) {
       arrayDisencripted.push(arrayAsc[j]);
     }
   }
-
-  let textDisencripted = String.fromCharCode(...arrayDisencripted);
-  return textDisencripted;
+}
+  return String.fromCharCode(...arrayDisencripted);
 }
