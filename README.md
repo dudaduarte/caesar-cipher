@@ -46,7 +46,7 @@ o projeto de forma integral.
 
 ## Diagrama de Blocos e Explicação do Projeto
 
-O [diagrama de blocos] desse projeto se encontra no seguinte link: (https://github.com/dudaduarte/caesar-cipher/blob/master/Diagrama%20do%20Cypher.jpeg).
+Diagrama de Blocos desse projeto: ![aqui](https://github.com/dudaduarte/caesar-cipher/blob/master/Diagrama%20do%20Cypher.jpeg)
 
 ### Explicando o diagrama:
 Ao entrar no site, o usuário tem duas opções: clicar para CIFRAR seu texto, ou para DECIFRAR. Em qualquer um dos dois caminhos, aparecerão duas caixas de texto na tela, sendo que a caixa da esquerda tem uma indicação por placeholder de que lá é o local para se inserir o texto. Nessa tela também deverá ser inserido o deslocamento desejado para o alfabeto. O usuário insere seu texto e, dependendo do caminho escolhido no início, clica em "criptografar" ou em "descriptografar". O próximo passo é a aparição do texto cifrado/decifrado na caixa de texto à direita na tela, chegando ao fim do diagrama.
