@@ -30,16 +30,42 @@ function startAgain() {
   clearText();
 }
 
+function turnOffsetIntoPositiveEncode() {
+  let offset = getInputEncode();
+  while (offset < 0) {
+    offset += 26;
+  }
+  return offset;
+}
+
+function turnOffsetIntoPositiveDecode() {
+  let offset = getInputDecode();
+  while (offset < 0) {
+    offset += 26;
+  }
+  return offset;
+}
+
+function getInputEncode() {
+  let offset = parseInt(document.getElementById('offsetInput').value);
+  return offset;
+}
+
+function getInputDecode() {
+  let offset = parseInt(document.getElementById('offsetInput2').value);
+  return offset;
+}
+
 function getInformationsEncode() {
   let string = document.getElementById('idTextUser').value;
-  let offset = parseInt(document.getElementById('offsetInput').value);
+  let offset = turnOffsetIntoPositiveEncode();
 
   document.getElementById('idTextModified').innerHTML = cipherEncode(offset, string);
 }
 
 function getInformationsDecode() {
   let string = document.getElementById('idTextUser2').value;
-  let offset = parseInt(document.getElementById('offsetInput2').value);
+  let offset = turnOffsetIntoPositiveDecode();
 
   document.getElementById('idTextModified2').innerHTML = cipherDecode(offset, string);
 }
@@ -51,15 +77,6 @@ function cipherEncode(offset, string) {
   for (let i = 0; i < string.length; i++) {
     arrayAsc.push(string.charCodeAt(i));
 
-    if (offset < 0) {
-      if (arrayAsc[i] >= 97 && arrayAsc[i] <= 122) {
-        arrayEncripted.push(([arrayAsc[i] - 122 + offset] % 26) + 122);
-      } else if (arrayAsc[i] >= 65 && arrayAsc[i] <= 90) {
-        arrayEncripted.push(([arrayAsc[i] - 90 + offset] % 26) + 90);
-      } else {
-        arrayEncripted.push(arrayAsc[i]);
-      }
-    } else {
     if (arrayAsc[i] >= 97 && arrayAsc[i] <= 122) {
       arrayEncripted.push(([arrayAsc[i] - 97 + offset] % 26) + 97);
     } else if (arrayAsc[i] >= 65 && arrayAsc[i] <= 90) {
@@ -67,7 +84,6 @@ function cipherEncode(offset, string) {
     } else {
       arrayEncripted.push(arrayAsc[i]);
     }    
-  }
 }
   return String.fromCharCode(...arrayEncripted);
 }
@@ -79,15 +95,6 @@ function cipherDecode(offset, string) {
   for (let i = 0; i < string.length; i++) {
     arrayAsc.push(string.charCodeAt(i));
 
-    if (offset < 0) {
-      if (arrayAsc[i] >= 97 && arrayAsc[i] <= 122) {
-        arrayDisencripted.push(([arrayAsc[i] - 97 - offset] % 26) + 97);
-      } else if (arrayAsc[i] >= 65 && arrayAsc[i] <= 90) {
-        arrayDisencripted.push(([arrayAsc[i] - 65 - offset] % 26) + 65);
-      } else {
-        arrayDisencripted.push(arrayAsc[i]);
-      }
-    } else {
     if (arrayAsc[i] >= 97 && arrayAsc[i] <= 122) {
       arrayDisencripted.push(([arrayAsc[i] - 122 - offset] % 26) + 122);
     } else if (arrayAsc[i] >= 65 && arrayAsc[i] <= 90) {
@@ -95,7 +102,6 @@ function cipherDecode(offset, string) {
     } else {
       arrayDisencripted.push(arrayAsc[i]);
     }
-  }
 }
   return String.fromCharCode(...arrayDisencripted);
 }
