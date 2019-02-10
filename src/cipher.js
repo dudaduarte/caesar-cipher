@@ -13,8 +13,8 @@ function showDivDecode() {
 function clearText() {
   document.getElementById('idFormEncode').reset();
   document.getElementById('idFormDecode').reset();
-  document.getElementById('idTextModified').innerHTML="";
-  document.getElementById('idTextModified2').innerHTML="";
+  document.getElementById('idTextModified').innerHTML = "";
+  document.getElementById('idTextModified2').innerHTML = "";
 }
 
 function copyText() {
@@ -30,16 +30,7 @@ function startAgain() {
   clearText();
 }
 
-function turnOffsetIntoPositiveEncode() {
-  let offset = getInputEncode();
-  while (offset < 0) {
-    offset += 26;
-  }
-  return offset;
-}
-
-function turnOffsetIntoPositiveDecode() {
-  let offset = getInputDecode();
+function turnOffsetIntoPositive(offset) {
   while (offset < 0) {
     offset += 26;
   }
@@ -56,23 +47,18 @@ function getInputDecode() {
   return offset;
 }
 
-function getInformationsEncode() {
-  let string = document.getElementById('idTextUser').value;
-  let offset = turnOffsetIntoPositiveEncode();
-
-  document.getElementById('idTextModified').innerHTML = cipherEncode(offset, string);
-}
-
-function getInformationsDecode() {
-  let string = document.getElementById('idTextUser2').value;
-  let offset = turnOffsetIntoPositiveDecode();
-
-  document.getElementById('idTextModified2').innerHTML = cipherDecode(offset, string);
+function startFunctionEncodeDecode() {
+  if (document.getElementById('idTextUser').value) {
+    document.getElementById('idTextModified').innerHTML = cipherEncode(getInputEncode(), document.getElementById('idTextUser').value);
+  } else {
+    document.getElementById('idTextModified2').innerHTML = cipherDecode(getInputDecode(), document.getElementById('idTextUser2').value);
+  }
 }
 
 function cipherEncode(offset, string) {
   let arrayAsc = [];
   let arrayEncripted = [];
+  offset = turnOffsetIntoPositive(offset);
 
   for (let i = 0; i < string.length; i++) {
     arrayAsc.push(string.charCodeAt(i));
@@ -83,14 +69,15 @@ function cipherEncode(offset, string) {
       arrayEncripted.push(([arrayAsc[i] - 65 + offset] % 26) + 65);
     } else {
       arrayEncripted.push(arrayAsc[i]);
-    }    
-}
+    }
+  }
   return String.fromCharCode(...arrayEncripted);
 }
 
 function cipherDecode(offset, string) {
   let arrayAsc = [];
   let arrayDisencripted = [];
+  offset = turnOffsetIntoPositive(offset);
 
   for (let i = 0; i < string.length; i++) {
     arrayAsc.push(string.charCodeAt(i));
@@ -102,6 +89,6 @@ function cipherDecode(offset, string) {
     } else {
       arrayDisencripted.push(arrayAsc[i]);
     }
-}
+  }
   return String.fromCharCode(...arrayDisencripted);
 }
