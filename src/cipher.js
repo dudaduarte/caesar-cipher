@@ -31,75 +31,69 @@ function startAgain() {
 }
 
 function getInformationsEncode() {
-  string = document.getElementById('idTextUser').value;
-  offset = parseInt(document.getElementById('offsetInput').value);
+  let string = document.getElementById('idTextUser').value;
+  let offset = parseInt(document.getElementById('offsetInput').value);
 
   document.getElementById('idTextModified').innerHTML = cipherEncode(offset, string);
 }
 
 function getInformationsDecode() {
-  string = document.getElementById('idTextUser2').value;
-  offset = parseInt(document.getElementById('offsetInput2').value);
+  let string = document.getElementById('idTextUser2').value;
+  let offset = parseInt(document.getElementById('offsetInput2').value);
 
   document.getElementById('idTextModified2').innerHTML = cipherDecode(offset, string);
 }
 
 function cipherEncode(offset, string) {
-  arrayAsc = [];
+  let arrayAsc = [];
+  let arrayEncripted = [];
 
-  for (i = 0; i < string.length; i++) {
+  for (let i = 0; i < string.length; i++) {
     arrayAsc.push(string.charCodeAt(i));
-  }
 
-  arrayEncripted = [];
-
-  for (j = 0; j < arrayAsc.length; j++) {
     if (offset < 0) {
-      if (arrayAsc[j] >= 97 && arrayAsc[j] <= 122) {
-        arrayEncripted.push(([arrayAsc[j] - 122 + offset] % 26) + 122);
-      } else if (arrayAsc[j] >= 65 && arrayAsc[j] <= 90) {
-        arrayEncripted.push(([arrayAsc[j] - 90 + offset] % 26) + 90);
+      if (arrayAsc[i] >= 97 && arrayAsc[i] <= 122) {
+        arrayEncripted.push(([arrayAsc[i] - 122 + offset] % 26) + 122);
+      } else if (arrayAsc[i] >= 65 && arrayAsc[i] <= 90) {
+        arrayEncripted.push(([arrayAsc[i] - 90 + offset] % 26) + 90);
       } else {
-        arrayEncripted.push(arrayAsc[j]);
+        arrayEncripted.push(arrayAsc[i]);
       }
     } else {
-    if (arrayAsc[j] >= 97 && arrayAsc[j] <= 122) {
-      arrayEncripted.push(([arrayAsc[j] - 97 + offset] % 26) + 97);
-    } else if (arrayAsc[j] >= 65 && arrayAsc[j] <= 90) {
-      arrayEncripted.push(([arrayAsc[j] - 65 + offset] % 26) + 65);
+    if (arrayAsc[i] >= 97 && arrayAsc[i] <= 122) {
+      arrayEncripted.push(([arrayAsc[i] - 97 + offset] % 26) + 97);
+    } else if (arrayAsc[i] >= 65 && arrayAsc[i] <= 90) {
+      arrayEncripted.push(([arrayAsc[i] - 65 + offset] % 26) + 65);
     } else {
-      arrayEncripted.push(arrayAsc[j]);
-    }
+      arrayEncripted.push(arrayAsc[i]);
+    }    
   }
 }
   return String.fromCharCode(...arrayEncripted);
 }
 
 function cipherDecode(offset, string) {
-  arrayAsc = [];
+  let arrayAsc = [];
+  let arrayDisencripted = [];
 
-  for (i = 0; i < string.length; i++) {
+  for (let i = 0; i < string.length; i++) {
     arrayAsc.push(string.charCodeAt(i));
-  }
 
-  arrayDisencripted = [];
-
-  for (j = 0; j < arrayAsc.length; j++) {
     if (offset < 0) {
-      if (arrayAsc[j] >= 97 && arrayAsc[j] <= 122) {
-        arrayDisencripted.push(([arrayAsc[j] - 97 - offset] % 26) + 97);
-      } else if (arrayAsc[j] >= 65 && arrayAsc[j] <= 90) {
-        arrayDisencripted.push(([arrayAsc[j] - 65 - offset] % 26) + 65);
+      if (arrayAsc[i] >= 97 && arrayAsc[i] <= 122) {
+        arrayDisencripted.push(([arrayAsc[i] - 97 - offset] % 26) + 97);
+      } else if (arrayAsc[i] >= 65 && arrayAsc[i] <= 90) {
+        arrayDisencripted.push(([arrayAsc[i] - 65 - offset] % 26) + 65);
       } else {
-        arrayDisencripted.push(arrayAsc[j]);
+        arrayDisencripted.push(arrayAsc[i]);
       }
     } else {
-    if (arrayAsc[j] >= 97 && arrayAsc[j] <= 122) {
-      arrayDisencripted.push(([arrayAsc[j] - 122 - offset] % 26) + 122);
-    } else if (arrayAsc[j] >= 65 && arrayAsc[j] <= 90) {
-      arrayDisencripted.push(([arrayAsc[j] - 90 - offset] % 26) + 90);
+    if (arrayAsc[i] >= 97 && arrayAsc[i] <= 122) {
+      arrayDisencripted.push(([arrayAsc[i] - 122 - offset] % 26) + 122);
+    } else if (arrayAsc[i] >= 65 && arrayAsc[i] <= 90) {
+      arrayDisencripted.push(([arrayAsc[i] - 90 - offset] % 26) + 90);
     } else {
-      arrayDisencripted.push(arrayAsc[j]);
+      arrayDisencripted.push(arrayAsc[i]);
     }
   }
 }
